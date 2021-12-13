@@ -1,0 +1,25 @@
+{
+  "name": "bd-con-mongodb-y-websockects",
+  "version": "1.0.0",
+  "description": "Un chat como telegram, pero algo mejor",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/V11Playko/Base-de-datos-con-MongoDB-y-WebSockets.git"
+  },
+  "keywords": [
+    "Chat",
+    "Telegram",
+    "Server",
+    "Nodejs"
+  ],
+  "author": "Heinner Vega <heinnervega20@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/V11Playko/Base-de-datos-con-MongoDB-y-WebSockets/issues"
+  },
+  "homepage": "https://github.com/V11Playko/Base-de-datos-con-MongoDB-y-WebSockets#readme"
+}
