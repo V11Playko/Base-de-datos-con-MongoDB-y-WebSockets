@@ -8,6 +8,10 @@ app.use(express.urlencoded({extended : false}));
 app.use(router);
 
 router.get('/message', function (req, res) {
+    console.log(req.headers);
+    res.header({
+        "custom-header": "Nuestro header personalizado"
+    })
     res.send('Lista de mensajes');
 });
 
