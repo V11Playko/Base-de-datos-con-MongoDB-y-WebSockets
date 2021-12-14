@@ -15,7 +15,7 @@ router.get('/message', function (req, res) {
         "custom-header": "Nuestro header personalizado"
     })
     if (req.query.error == "ok") {
-        response.error(req, res, 'error simulado', 400);
+        response.error(req, res, 'error inesperado', 500, 'Es solo una simulacion de los errores');
     } else {
         response.success(req, res, 'Lista de mensajes', 201);
     }
