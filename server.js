@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const response = require('./network/response');
+
 var app = express();
 
 app.use(express.json());
@@ -12,33 +14,34 @@ router.get('/message', function (req, res) {
     res.header({
         "custom-header": "Nuestro header personalizado"
     })
-    res.send('Lista de mensajes');
+    if (req.query.error == "ok") {
+        response.error(req, res, 'error simulado', 400);
+    } else {
+        response.success(req, res, 'Lista de mensajes', 201);
+    }
 });
 
 router.post('/message', function (req, res) {
     console.log(req.body);
     console.log(req.query);
-    res.send('Mensaje añadido');
+    response.success(req, res, 'Mensaje añadido');
 });
 
 router.put('/message', function (req, res) {
     console.log(req.body);
-    res.send('Mensaje editado');
+    response.success(req, res, 'Mensaje editado');
 });
 
 router.patch('/message', function (req, res) {
     console.log(req.body);
-    res.send('Se edito solo una parte del mensaje');
+    response.success(req, res, 'Se edito solo una parte del mensaje');
 });
 
 router.delete('/message', function (req, res) {
+    console.log(req.query);
     console.log(req.body);
-    res.send('Mensaje borrado');
+    response.success(req, res, 'Eliminado correctamente');
 });
-
-// app.use('/', function(req, res) {
-//     res.send('Holaaa :v');
-// });
 
 app.listen(3000);
 console.log("La aplicación esta escuchando en http://localhost:3000")
