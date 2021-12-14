@@ -47,3 +47,5 @@ app.use('/app', express.static('public'));
 
 app.listen(3000);
 console.log("La aplicación esta escuchando en http://localhost:3000")
+
+// Se termino el servidor HTTP en Javascript, y comenzar a escuchar y responder peticiones desde un cliente. (Esto es para hacer un commit si en algun momento tengo que volver a leer el codigo)
