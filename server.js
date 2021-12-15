@@ -18,3 +18,4 @@ app.listen(3000, () => {
 });
 
 // Se termino el servidor HTTP en Javascript, y comenzar a escuchar y responder peticiones desde un cliente. (Esto es para hacer un commit si en algun momento tengo que volver a leer el codigo)
+// Comprender y desarrollar la arquitectura básica de un backend en NodeJS, y comunicarse entre módulos
