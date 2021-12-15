@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const response = require('../../network/response');
+const controller = require('./controller');
 
 router.get('/', function (req, res) {
     console.log(req.headers);
@@ -16,9 +17,16 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    console.log(req.body);
-    console.log(req.query);
-    response.success(req, res, 'Mensaje añadido');
+    controller.addMessage(req.body.user, req.body.message)
+		.then(fullMessage => {
+			response.success(req, res, fullMessage, 201, 'Datos recibidos') // -> Response
+		})
+		.catch(() => {
+			response.error(
+				// -> Response error
+				req,res,'Informacion invalida',403,'Error en el controller',
+			)
+		})
 });
 
 router.put('/', function (req, res) {
