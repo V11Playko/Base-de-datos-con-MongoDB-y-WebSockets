@@ -5,15 +5,13 @@ const response = require('../../network/response');
 const controller = require('./controller');
 
 router.get('/', function (req, res) {
-    console.log(req.headers);
-    res.header({
-        "custom-header": "Nuestro header personalizado"
-    })
-    if (req.query.error == "ok") {
-        response.error(req, res, 'error inesperado', 500, 'Es solo una simulacion de los errores');
-    } else {
-        response.success(req, res, 'Lista de mensajes', 201);
-    }
+    controller.getMessages()
+        .then((messageList) => {
+            response.success(req, res, messageList, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Unexpected Error', 500, e);
+        })
 });
 
 router.post('/', function (req, res) {
