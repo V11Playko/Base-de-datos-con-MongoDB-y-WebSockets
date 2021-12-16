@@ -32,9 +32,14 @@ router.put('/', function (req, res) {
     response.success(req, res, 'Mensaje editado');
 });
 
-router.patch('/', function (req, res) {
-    console.log(req.body);
-    response.success(req, res, 'Se edito solo una parte del mensaje');
+router.patch('/:id', function (req, res) {
+    controller.updateMessage(req.params.id, req.body.message)
+        .then((data) => {
+            response.success(req, res, data, 200);
+        })
+        .catch(e => {
+            response.error(req, res, 'Error interno', 500, e);
+        });
 });
 
 router.delete('/', function (req, res) {
