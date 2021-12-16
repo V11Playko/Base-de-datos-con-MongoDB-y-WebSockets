@@ -1,7 +1,11 @@
 const express = require('express');
 const path = require('path');
-
 const router = require('./network/routes');
+const db = require("./db");
+require("dotenv").config({ path: ".env" });
+
+// conexion a la base de datos
+db(process.env.DB_CONNECT);
 
 var app = express();
 
