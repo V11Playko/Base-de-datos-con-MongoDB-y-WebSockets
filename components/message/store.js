@@ -5,23 +5,21 @@ function addMessage(message) {
   myMessage.save();
 }
 
-async function getMessages(filterUser, filterMessage) {
-  let filter = {}
-
-    if (filterUser){
-        filter = {
-            user: filterUser
-        }
+async function getMessages(filterUser) {
+  return new Promise((resolve, reject) => {
+    let filter = {};
+    if (filterUser !== null) {
+      filter = {user: filterUser};
     }
-    
-    if (filterMessage){
-        filter = {
-            ...filter,
-            message: filterMessage
+    Model.find(filter)
+      .populate('user')
+      .exec((error, populated) => {
+        if (error) {
+          reject(error);
         }
-    }
-
-    return await Model.find(filter)
+        resolve(populated);
+      });
+  })
 }
 
 async function updateText(id, message) {
